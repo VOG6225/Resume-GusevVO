@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Виталий Гусев - QA Engineer</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" href="favicon.png" type="image/x-icon">
+  <style>
+    :root {
+      /* Светлая тема */
+      --primary: #2b5876;
+      --secondary: #4e4376;
+      --accent: #3a7bd5;
+      --text: #333;
+      --bg: #f5f7fa;
+      --container-bg: white;
+      --header-text: white;
+      --border: #eee;
+      --gray: #6c757d;
+      --skill-bg: #f1f1f1;
+    }
+
+    .dark-theme {
+      /* Тёмная тема */
+      --primary: #1e3c72;
+      --secondary: #2a5298;
+      --accent: #4b6cb7;
+      --text: #e0e0e0;
+      --bg: #121212;
+      --container-bg: #1e1e1e;
+      --header-text: #f0f0f0;
+      --border: #444;
+      --gray: #9e9e9e;
+      --skill-bg: #2d2d2d;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--bg);
+      margin: 0;
+      padding: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--container-bg);
+      box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--header-text);
+      padding: 40px 30px 30px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .controls {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+    }
+
+    .btn {
+      padding: 8px 15px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: 500;
+      transition: all 0.2s;
+      font-size: 14px;
+    }
+
+    .btn-theme {
+      background: rgba(255,255,255,0.2);
+      color: white;
+      backdrop-filter: blur(5px);
+    }
+
+    .btn-pdf {
+      background: #e74c3c;
+      color: white;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      font-size: 2.2em;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .subtitle {
+      font-size: 1.2em;
+      opacity: 0.9;
+      margin: 10px 0 0;
+      font-weight: 300;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 30px;
+      padding: 30px;
+    }
+
+    .sidebar {
+      border-right: 1px solid var(--border);
+      padding-right: 20px;
+    }
+
+    section {
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--primary);
+      font-size: 1.3em;
+      margin-bottom: 15px;
+      padding-bottom: 5px;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    h3 {
+      font-size: 1.1em;
+      margin: 0 0 5px;
+      color: var(--secondary);
+    }
+
+    .job {
+      margin-bottom: 25px;
+    }
+
+    .date {
+      color: var(--gray);
+      font-size: 0.9em;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin: 10px 0;
+    }
+
+    li {
+      margin-bottom: 8px;
+      position: relative;
+    }
+
+    .contacts li, .skills li, .education p {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+    }
+
+    i {
+      width: 20px;
+      color: var(--accent);
+      margin-right: 10px;
+      text-align: center;
+      font-size: 0.95em;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      opacity: 0.9;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .skill-item {
+      background: var(--skill-bg);
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      display: flex;
+      align-items: center;
+    }
+
+    .skill-item i {
+      font-size: 0.8em;
+    }
+
+    @media (max-width: 768px) {
+      .content {
+        grid-template-columns: 1fr;
+      }
+      
+      .sidebar {
+        border-right: none;
+        padding-right: 0;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 20px;
+      }
+
+      .controls {
+        position: static;
+        justify-content: center;
+        margin-bottom: 15px;
+      }
+
+      header {
+        padding-top: 30px;
+      }
+    }
+
+    @media print {
+      .controls {
+        display: none;
+      }
+      
+      body {
+        background: white;
+        color: black;
+        padding: 0;
+      }
+      
+      .container {
+        box-shadow: none;
+        margin: 0;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body class="light-theme">
+  <div class="container">
+    <div class="controls">
+      <button id="theme-toggle" class="btn btn-theme" title="Сменить тему">
+        <i class="fas fa-moon"></i> Тема
+      </button>
+      <a href="#" id="pdf-download" class="btn btn-pdf" title="Скачать PDF">
+        <i class="fas fa-file-pdf"></i> PDF
+      </a>
+    </div>
+
+    <header>
+      <h1>Виталий Гусев</h1>
+      <p class="subtitle">QA Engineer (Manual)</p>
+    </header>
+
+    <div class="content">
+      <div class="sidebar">
+        <section class="contacts">
+          <h2><i class="fas fa-id-card"></i> Контакты</h2>
+          <ul>
+            <li><i class="fas fa-phone"></i> +7 (953) 635-06-15</li>
+            <li><i class="fas fa-envelope"></i> vitalya.622525@gmail.com</li>
+            <li><i class="fab fa-telegram"></i> @VitalyG6</li>
+            <li><i class="fas fa-map-marker-alt"></i> Российская Федерация</li>
+          </ul>
+        </section>
+        
+        <section class="skills">
+          <h2><i class="fas fa-code"></i> Навыки</h2>
+          <div class="skills-grid">
+            <div class="skill-item">
+              <i class="fas fa-check"></i> Manual Testing
+            </div>
+            <div class="skill-item">
+              <i class="fas fa-check"></i> Postman
+            </div>
+            <div class="skill-item">
+              <i class="fas fa-check"></i> Jira
+            </div>
+            <div class="skill-item">
+              <i class="fas fa-check"></i> Git/GitHub
+            </div>
+            <div class="skill-item">
+              <i class="fas fa-check"></i> SQL
+            </div>
+            <div class="skill-item">
+              <i class="fas fa-check"></i> Agile/Scrum
+            </div>
+            <div class="skill-item">
+              <i class="fas fa-check"></i> Test Design
+            </div>
+            <div class="skill-item">
+              <i class="fas fa-check"></i> API Testing
+            </div>
+          </div>
+        </section>
+        
+        <section class="education">
+          <h2><i class="fas fa-graduation-cap"></i> Образование</h2>
+          <h3>Самарский государственный технический университет</h3>
+          <p><i class="fas fa-book"></i> Нефтегазовое дело (бакалавр)</p>
+          <p><i class="far fa-calendar-alt"></i> Окончил в 2023</p>
+        </section>
+        
+        <section class="additional">
+          <h2><i class="fas fa-info-circle"></i> Дополнительно</h2>
+          <p><i class="fas fa-certificate"></i> <strong>Курсы:</strong> Skillfactory - Тестировщик-автоматизатор на Python (2024 — н.в.)</p>
+          <p><i class="fas fa-user"></i> <strong>Личные качества:</strong> Критическое мышление, адаптивность, самостоятельность, чувство юмора.</p>
+          <p><i class="fas fa-language"></i> <strong>Языки:</strong> Русский (родной)</p>
+        </section>
+      </div>
+      
+      <div class="main-content">
+        <section class="experience">
+          <h2><i class="fas fa-briefcase"></i> Опыт работы</h2>
+          
+          <div class="job">
+            <h3>ООО «Гео Лог»</h3>
+            <p class="date"><i class="far fa-calendar"></i> январь 2025 — настоящее время | QA Engineer</p>
+            <ul>
+              <li>Проведение Smoke, регрессионного и функционального тестирования CRM-системы методом черного ящика (Black box)</li>
+              <li>Сбор обратной связи от пользователей, анализ замечаний и предложений для улучшения функциональности</li>
+              <li>Взаимодействие с командой разработки для устранения недочетов</li>
+              <li>Работа с технической документацией (требования, спецификации, ТЗ)</li>
+              <li>Составление тестовой документации: чек-листы, тест-кейсы, баг-репорты</li>
+            </ul>
+          </div>
+          
+          <div class="job">
+            <h3>ООО «ИМСС»</h3>
+            <p class="date"><i class="far fa-calendar"></i> июль 2022 — январь 2025 | Руководитель проекта</p>
+            <ul>
+              <li>Планирование и контроль организационно-технических задач</li>
+              <li>Координация работы полевых партий, расчет KPI персонала</li>
+              <li>Взаимодействие с заказчиком, переговоры, постановка задач</li>
+              <li>Подготовка финансовых документов и отчетности</li>
+            </ul>
+          </div>
+          
+          <div class="job">
+            <h3>ООО «ИМСС»</h3>
+            <p class="date"><i class="far fa-calendar"></i> сентябрь 2017 — июль 2022 | Главный геолог</p>
+            <ul>
+              <li>Руководство геологической службой компании</li>
+              <li>Анализ статистической информации, составление отчетов</li>
+              <li>Разработка методических материалов для повышения качества услуг</li>
+            </ul>
+          </div>
+        </section>
+        
+        <section class="computer-skills">
+          <h2><i class="fas fa-laptop-code"></i> Технические навыки</h2>
+          <ul>
+            <li><strong>Тестирование:</strong> Functional, Regression, Smoke, Cross-browser</li>
+            <li><strong>Инструменты:</strong> Jira, Postman, Swagger, Git/GitHub</li>
+            <li><strong>Базы данных:</strong> Написание базовых SQL-запросов</li>
+            <li><strong>Методологии:</strong> Agile (Scrum, Kanban)</li>
+            <li><strong>Другое:</strong> Microsoft Office, Adobe Photoshop</li>
+          </ul>
+        </section>
+
+        <section class="projects">
+          <h2><i class="fas fa-tasks"></i> Проекты</h2>
+          <div class="job">
+            <h3>CRM-система для учета оборудования</h3>
+            <ul>
+              <li>Полный цикл тестирования веб-приложения</li>
+              <li>Оптимизация процесса тестирования на 20% через чек-листы</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Переключение темы
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Проверяем сохранённую тему
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      body.classList.add(savedTheme);
+      updateThemeIcon();
+    }
+
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-theme');
+      const theme = body.classList.contains('dark-theme') ? 'dark-theme' : 'light-theme';
+      localStorage.setItem('theme', theme);
+      updateThemeIcon();
+    });
+
+    function updateThemeIcon() {
+      const icon = themeToggle.querySelector('i');
+      if (body.classList.contains('dark-theme')) {
+        icon.classList.replace('fa-moon', 'fa-sun');
+        themeToggle.setAttribute('title', 'Светлая тема');
+      } else {
+        icon.classList.replace('fa-sun', 'fa-moon');
+        themeToggle.setAttribute('title', 'Тёмная тема');
+      }
+    }
+
+    // Генерация PDF
+    document.getElementById('pdf-download').addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Подключаем библиотеку динамически
+      const script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+      script.onload = function() {
+        // Временно скрываем кнопки для PDF
+        const controls = document.querySelector('.controls');
+        controls.style.opacity = '0';
+        
+        const element = document.querySelector('.container');
+        const opt = {
+          margin: 10,
+          filename: 'Резюме_Гусев_Виталий_QA.pdf',
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { 
+            scale: 2,
+            logging: true,
+            useCORS: true,
+            allowTaint: true
+          },
+          jsPDF: { 
+            unit: 'mm', 
+            format: 'a4', 
+            orientation: 'portrait' 
+          },
+          pagebreak: { 
+            mode: ['avoid-all', 'css', 'legacy'] 
+          }
+        };
+        
+        // Создаем PDF
+        html2pdf().set(opt).from(element).save().then(() => {
+          // Возвращаем кнопки после генерации
+          controls.style.opacity = '1';
+        });
+      };
+      document.head.appendChild(script);
+    });
+
+    // Инициализация темы при загрузке
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        body.classList.add('dark-theme');
+        localStorage.setItem('theme', 'dark-theme');
+        updateThemeIcon();
+      }
+    });
+  </script>
+</body>
+</html>
